@@ -1,0 +1,6 @@
+src/
+tests/
+examples/
+scripts/
+.test/
+.github/
