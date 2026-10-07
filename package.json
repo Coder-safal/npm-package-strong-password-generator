@@ -1,0 +1,50 @@
+{
+  "name": "strong-password",
+  "version": "0.1.0",
+  "description": "Dependency-free cryptographic password, random string and passphrase generation for Node.js",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.23.3"
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "node scripts/run.mjs build",
+    "typecheck": "node scripts/run.mjs typecheck",
+    "test": "node scripts/run.mjs test",
+    "check:package": "node scripts/run.mjs check:package",
+    "prepublishOnly": "node scripts/run.mjs validate"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.0",
+    "typescript": "5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Coder-safal/npm-package-strong-password-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Coder-safal/npm-package-strong-password-generator/issues"
+  },
+  "homepage": "https://github.com/Coder-safal/npm-package-strong-password-generator#readme"
+}
