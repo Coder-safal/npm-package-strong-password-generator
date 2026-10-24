@@ -1,5 +1,5 @@
 {
-  "name": "strong-password",
+  "name": "@coder-safal/strong-password",
   "version": "0.1.0",
   "description": "Dependency-free cryptographic password, random string and passphrase generation for Node.js",
   "license": "MIT",
