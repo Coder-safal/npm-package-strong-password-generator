@@ -14,8 +14,8 @@ try {
   runPackageManager(args, {cwd: folder});
   for (const format of ['module', 'commonjs']) {
     const load = format === 'module'
-      ? "import * as api from 'strong-password';"
-      : "const api = require('strong-password');";
+      ? "import * as api from '@coder-safal/strong-password';"
+      : "const api = require('@coder-safal/strong-password');";
     execFileSync(process.execPath, [`--input-type=${format}`, '-e', `${load}
       if(api.generatePassword().length !== 24) throw new Error('Password failed');
       if(api.generatePassphrase().split('-').length !== 10) throw new Error('Passphrase failed');
