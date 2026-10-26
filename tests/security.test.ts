@@ -39,7 +39,7 @@ test('conditional exports and declarations resolve for ESM and CommonJS consumer
       } finally { rmSync(file, {force: true}); }
     }
     for (const flag of ['module', 'commonjs']) {
-      const script = flag === 'module' ? "import {generatePassword} from 'strong-password'; if(generatePassword().length!==24) process.exit(1)" : "if(require('strong-password').generatePassword().length!==24) process.exit(1)";
+      const script = flag === 'module' ? "import {generatePassword} from '@coder-safal/strong-password'; if(generatePassword().length!==24) process.exit(1)" : "if(require('@coder-safal/strong-password').generatePassword().length!==24) process.exit(1)";
       execFileSync(process.execPath, ['--input-type=' + flag, '-e', script]);
     }
 });
