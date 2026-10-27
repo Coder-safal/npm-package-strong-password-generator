@@ -7,12 +7,12 @@ Initial development: **0.1.0**. No audit or certification is claimed. No runtime
 ## Installation and compatibility
 
 ```bash
-npm install strong-password
+npm install @coder-safal/strong-password
 # or
-pnpm add strong-password
+pnpm add @coder-safal/strong-password
 ```
 
-This is the intended installation command after publication; this repository has not been published by this implementation. `npm view strong-password name version --json` returned registry E404 on October 27, 2026. This does not guarantee registration rights or availability; recheck npm naming rules, conflicts, and trademarks before release.
+The npm package name is `@coder-safal/strong-password`. npm rejected the unscoped name `strong-password` because it is too similar to the existing `strongpassword` package. These installation commands apply after a successful publication. Publishing requires an npm account with permission to use the `@coder-safal` scope.
 
 Requires Node.js **22.23.3 or newer**. Locally verified on **22.23.3**; other versions are not claimed as tested. Core code targets Node.js, with no browser globals.
 
@@ -21,7 +21,7 @@ Requires Node.js **22.23.3 or newer**. Locally verified on **22.23.3**; other ve
 ESM (also valid TypeScript):
 
 ```js
-import { generatePassword, generatePassphrase, generateRandomString, estimatePasswordStrength } from 'strong-password';
+import { generatePassword, generatePassphrase, generateRandomString, estimatePasswordStrength } from '@coder-safal/strong-password';
 
 const password = generatePassword(); // 24 characters; all four groups guaranteed
 const phrase = generatePassphrase(); // 10 independently selected words
@@ -33,7 +33,7 @@ const strength = estimatePasswordStrength(password);
 CommonJS:
 
 ```cjs
-const { generatePassword, generatePassphrase } = require('strong-password');
+const { generatePassword, generatePassphrase } = require('@coder-safal/strong-password');
 const password = generatePassword({length: 32});
 const phrase = generatePassphrase({words: 10, separator: '-'});
 ```
@@ -41,7 +41,7 @@ const phrase = generatePassphrase({words: 10, separator: '-'});
 TypeScript exports every public option and result type, with no default exports:
 
 ```ts
-import { generatePassword, type PasswordOptions, type PasswordStrength, estimatePasswordStrength } from 'strong-password';
+import { generatePassword, type PasswordOptions, type PasswordStrength, estimatePasswordStrength } from '@coder-safal/strong-password';
 const policy: PasswordOptions = {length: 32, excludeAmbiguous: true};
 const password = generatePassword(policy);
 const result: PasswordStrength = estimatePasswordStrength(password);
@@ -70,7 +70,7 @@ With `requiredCharacterGroups`, groups are securely shuffled and the requested n
 Custom `characters` cannot be combined with any built-in group switch or `requiredCharacterGroups`; exclusions still apply. Duplicate code points are removed, so duplicates do not weight selection.
 
 ```js
-import { generatePassword } from 'strong-password';
+import { generatePassword } from '@coder-safal/strong-password';
 const long = generatePassword({length: 32, uppercase: true, lowercase: true, numbers: true, symbols: true});
 const withoutSymbols = generatePassword({length: 20, symbols: false});
 const readable = generatePassword({length: 24, excludeAmbiguous: true, excludeCharacters: '!@'});
@@ -84,7 +84,7 @@ const unicode = generatePassword({length: 16, characters: '😀🦊éλ'});
 `characters` is required. `length` defaults to 32 and must be an integer from 1–4096. Selection is independent and uniform over unique Unicode code points. Alphabet input is limited to 65,536 UTF-16 code units and must remain nonempty. A one-character alphabet is valid but entirely predictable. Small alphabets and short strings may be unsuitable for passwords or secrets.
 
 ```js
-import { generateRandomString } from 'strong-password';
+import { generateRandomString } from '@coder-safal/strong-password';
 const value = generateRandomString({length: 32, characters: 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'});
 ```
 
@@ -102,7 +102,7 @@ const value = generateRandomString({length: 32, characters: 'ABCDEFGHJKLMNPQRSTU
 Words may repeat; sampling uses replacement. Every entry is validated before selection. Words cannot contain whitespace and are limited to 128 UTF-16 code units. Duplicate entries are removed. Capitalization uses JavaScript Unicode case mapping (which can expand a code point), and duplicates are removed again after capitalization. Custom lists are never mutated.
 
 ```js
-import { generatePassphrase } from 'strong-password';
+import { generatePassphrase } from '@coder-safal/strong-password';
 const phrase = generatePassphrase({words: 10, separator: '-', capitalize: true, numericSuffix: true, symbolSuffix: true});
 const custom = generatePassphrase({words: 6, separator: ' ', wordList: ['cedar', 'river', 'amber', 'cloud']});
 // This tiny custom list provides only 12 bits of word-selection entropy.
@@ -182,7 +182,7 @@ Contributions should include a focused explanation, regression coverage for chan
 Publishing requires an explicit maintainer decision. Verify the npm name and account first:
 
 ```bash
-npm view strong-password name
+npm view @coder-safal/strong-password name
 npm login
 npm whoami
 ```
@@ -194,11 +194,11 @@ Run the development checks above and inspect `npm pack --dry-run` carefully. Onl
 Only after explicit release authorization:
 
 ```bash
-npm publish
-npm view strong-password version
+npm publish --access public
+npm view @coder-safal/strong-password version
 ```
 
-Then install the release in a separate sample project with `npm install strong-password` and test both ESM and CommonJS imports. `npm run check:package` or `pnpm run check:package` also packs and installs into a temporary sample project and checks both module formats; the temporary files are removed afterward.
+Then install the release in a separate sample project with `npm install @coder-safal/strong-password` and test both ESM and CommonJS imports. `npm run check:package` or `pnpm run check:package` also packs and installs into a temporary sample project and checks both module formats; the temporary files are removed afterward.
 
 Version 0.1.0 is for initial API development. Use semantic versioning: patch for compatible fixes, minor for compatible features, major for breaking changes. Stabilize the API and document limitations before 1.0.0.
 
