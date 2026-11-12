@@ -1,6 +1,6 @@
 {
   "name": "@coder-safal/strong-password",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Dependency-free cryptographic password, random string and passphrase generation for Node.js",
   "license": "MIT",
   "type": "module",
@@ -25,7 +25,7 @@
     "LICENSE"
   ],
   "engines": {
-    "node": ">=22.23.3"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "clean": "node scripts/clean.mjs",
