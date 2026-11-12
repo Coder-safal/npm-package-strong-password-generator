@@ -14,7 +14,7 @@ pnpm add @coder-safal/strong-password
 
 The npm package name is `@coder-safal/strong-password`. npm rejected the unscoped name `strong-password` because it is too similar to the existing `strongpassword` package. These installation commands apply after a successful publication. Publishing requires an npm account with permission to use the `@coder-safal` scope.
 
-Requires Node.js **22.23.3 or newer**. Locally verified on **22.23.3**; other versions are not claimed as tested. Core code targets Node.js, with no browser globals.
+Requires Node.js **22 or newer**. Locally verified on **22.23.3**; other Node.js 22+ versions are expected to work but are not claimed as tested. Core code targets Node.js, with no browser globals.
 
 ## Usage
 
